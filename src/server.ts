@@ -55,14 +55,14 @@ async function main(): Promise<void> {
     // Health check
     if (req.method === "GET" && req.url === "/health") {
       res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ status: "ok", service: "vector-store-mcp" }));
+      res.end(JSON.stringify({ status: "ok", service: "@dotlab-hq/vector-store-mcp" }));
       return;
     }
 
     // MCP endpoint
     if (req.url === "/mcp") {
       const mcpServer = new McpServer({
-        name: "vector-store-mcp",
+        name: "@dotlab-hq/vector-store-mcp",
         version: "1.0.0",
       });
       registerAllTools(mcpServer);
@@ -96,13 +96,13 @@ async function main(): Promise<void> {
   });
 
   server.listen(PORT, HOST, () => {
-    console.log(`[vector-store-mcp] HTTP server listening on http://${HOST}:${PORT}`);
-    console.log(`[vector-store-mcp] MCP endpoint: http://${HOST}:${PORT}/mcp`);
-    console.log(`[vector-store-mcp] Health check:  http://${HOST}:${PORT}/health`);
+    console.log(`[@dotlab-hq/vector-store-mcp] HTTP server listening on http://${HOST}:${PORT}`);
+    console.log(`[@dotlab-hq/vector-store-mcp] MCP endpoint: http://${HOST}:${PORT}/mcp`);
+    console.log(`[@dotlab-hq/vector-store-mcp] Health check:  http://${HOST}:${PORT}/health`);
   });
 }
 
 main().catch((error) => {
-  console.error(`[vector-store-mcp] Fatal error:`, error);
+  console.error(`[@dotlab-hq/vector-store-mcp] Fatal error:`, error);
   process.exit(1);
 });

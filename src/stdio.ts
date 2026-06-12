@@ -16,7 +16,7 @@ import { registerAllTools } from "./tools/index.js";
 
 async function main(): Promise<void> {
   const server = new McpServer({
-    name: "vector-store-mcp",
+    name: "@dotlab-hq/vector-store-mcp",
     version: "1.0.0",
   });
 
@@ -25,10 +25,10 @@ async function main(): Promise<void> {
   const transport = new StdioServerTransport();
   await server.connect(transport);
 
-  process.stderr.write("[vector-store-mcp] Server started via stdio transport.\n");
+  process.stderr.write("[@dotlab-hq/vector-store-mcp] Server started via stdio transport.\n");
 }
 
 main().catch((error) => {
-  process.stderr.write(`[vector-store-mcp] Fatal error: ${error}\n`);
+  process.stderr.write(`[@dotlab-hq/vector-store-mcp] Fatal error: ${error}\n`);
   process.exit(1);
 });

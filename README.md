@@ -1,4 +1,4 @@
-# vector-store-mcp
+# @dotlab-hq/vector-store-mcp
 
 MCP (Model Context Protocol) server for the **OpenAI Vector Store API**. Manage vector stores, files, file batches, and perform semantic search — all through a single MCP server.
 
@@ -155,7 +155,7 @@ import {
   registerAllTools,
   getClient,
   resetClient,
-} from "vector-store-mcp";
+} from "@dotlab-hq/vector-store-mcp";
 
 const server = new McpServer({ name: "my-server", version: "1.0.0" });
 registerAllTools(server);

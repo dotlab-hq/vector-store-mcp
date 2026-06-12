@@ -1,5 +1,5 @@
 /**
- * vector-store-mcp — programmatic API entry point.
+ * @dotlab-hq/vector-store-mcp — programmatic API entry point.
  *
  * Import this module to use the MCP server in your own code,
  * or re-export for custom integrations.
