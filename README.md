@@ -86,32 +86,36 @@ Add to your `claude_desktop_config.json`:
 
 ### VS Code (GitHub Copilot)
 
-Add to your VS Code `settings.json` or `.vscode/mcp.json`:
+Add to `.vscode/mcp.json` in your workspace root:
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "vector-store": {
-        "command": "npx",
-        "args": ["-y", "@dotlab-hq/vector-store-mcp"],
-        "env": {
-          "OPENAI_API_KEY": "your-api-key-here"
-        }
+  "servers": {
+    "vector-store": {
+      "command": "npx",
+      "args": ["-y", "@dotlab-hq/vector-store-mcp"],
+      "env": {
+        "OPENAI_API_KEY": "your-api-key-here"
       }
     }
   }
 }
 ```
 
-> **Windows users:** If you see `'vector-store-mcp' is not recognized` in the MCP logs, wrap `npx` with `cmd /c`:
+> **Windows users:** `npx` may fail with `'vector-store-mcp' is not recognized` due to a known Windows shim resolution issue. To fix this, link the package globally once:
+>
+> ```bash
+> npm link @dotlab-hq/vector-store-mcp
+> ```
+>
+> Then use the direct command in `.vscode/mcp.json`:
 >
 > ```json
 > {
 >   "servers": {
 >     "vector-store": {
->       "command": "cmd",
->       "args": ["/c", "npx", "-y", "@dotlab-hq/vector-store-mcp"],
+>       "command": "vector-store-mcp",
+>       "args": [],
 >       "env": {
 >         "OPENAI_API_KEY": "your-api-key-here"
 >       }
@@ -119,8 +123,6 @@ Add to your VS Code `settings.json` or `.vscode/mcp.json`:
 >   }
 > }
 > ```
->
-> This works around a Windows issue where VS Code can't resolve the `.cmd` shim that `npx` installs.
 
 ### HTTP/Web Clients
 
