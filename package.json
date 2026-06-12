@@ -1,0 +1,73 @@
+{
+  "name": "@dotlab-hq/vector-store-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for OpenAI Vector Store API — manage vector stores, files, batches, and search.",
+  "type": "module",
+  "bin": {
+    "vector-store-mcp": "dist/stdio.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./cli": {
+      "types": "./dist/stdio.d.ts",
+      "default": "./dist/stdio.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotlab-hq/vector-store-mcp.git"
+  },
+  "scripts": {
+    "start": "node dist/stdio.js",
+    "start:http": "node dist/server.js",
+    "dev": "tsx watch src/stdio.ts",
+    "dev:http": "tsx watch src/server.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "link": "bun link"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "openai",
+    "vector-store",
+    "embeddings",
+    "ai",
+    "search"
+  ],
+  "author": "Wpsadi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "openai": "^4.96.0",
+    "zod": "^3.24.4"
+  }
+}
