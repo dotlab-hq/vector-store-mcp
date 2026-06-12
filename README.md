@@ -74,8 +74,8 @@ Add to your `claude_desktop_config.json`:
 {
   "mcpServers": {
     "vector-store": {
-      "command": "node",
-      "args": ["/absolute/path/to/vector-store-mcp/dist/stdio.js"],
+      "command": "npx",
+      "args": ["-y", "@dotlab-hq/vector-store-mcp"],
       "env": {
         "OPENAI_API_KEY": "your-api-key-here"
       }
@@ -93,8 +93,8 @@ Add to your VS Code `settings.json` or `.vscode/mcp.json`:
   "mcp": {
     "servers": {
       "vector-store": {
-        "command": "node",
-        "args": ["/absolute/path/to/vector-store-mcp/dist/stdio.js"],
+        "command": "npx",
+        "args": ["-y", "@dotlab-hq/vector-store-mcp"],
         "env": {
           "OPENAI_API_KEY": "your-api-key-here"
         }
@@ -103,6 +103,24 @@ Add to your VS Code `settings.json` or `.vscode/mcp.json`:
   }
 }
 ```
+
+> **Windows users:** If you see `'vector-store-mcp' is not recognized` in the MCP logs, wrap `npx` with `cmd /c`:
+>
+> ```json
+> {
+>   "servers": {
+>     "vector-store": {
+>       "command": "cmd",
+>       "args": ["/c", "npx", "-y", "@dotlab-hq/vector-store-mcp"],
+>       "env": {
+>         "OPENAI_API_KEY": "your-api-key-here"
+>       }
+>     }
+>   }
+> }
+> ```
+>
+> This works around a Windows issue where VS Code can't resolve the `.cmd` shim that `npx` installs.
 
 ### HTTP/Web Clients
 
